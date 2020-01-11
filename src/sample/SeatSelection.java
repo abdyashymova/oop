@@ -557,7 +557,7 @@ public class SeatSelection implements Initializable {
 
             for (int i = 0; i < 108; i++) {
                 if (seats[i].equals("Selected"))
-                    seats[i] = "Open";
+                    seats[i] = "";
             }
         }
     }
@@ -567,11 +567,11 @@ public class SeatSelection implements Initializable {
         Label seat = (Label) event.getSource();
         Label seatRef = getClickedLabelID(seat.getId());
 
-        if (seat.getText().equals("Open")) {
+        if (seat.getText().equals("")) {
             seatRef.setText("Selected");
             seatRef.setStyle("-fx-background-color: orange;");
         } else if (seat.getText().equals("Selected")) {
-            seatRef.setText("Open");
+            seatRef.setText("");
             seatRef.setStyle("-fx-background-color: white;");
             seatRef.getStylesheets().add("mycss.css");
         }
@@ -675,10 +675,10 @@ public class SeatSelection implements Initializable {
         for (int i = 0; i < seatList.size(); i++) {
             seatRef = seatList.get(i);
 
-            if (seatRef.getText().toString().equals("Open")) {
+            if (seatRef.getText().toString().equals("")) {
                 seatRef.setStyle("-fx-background-color: white;");
             } else if (seatRef.getText().toString().equals("Selected")) {
-                seatRef.setText("Open");
+                seatRef.setText("");
                 seatRef.setStyle("-fx-background-color: white;");
             }
         }
@@ -705,10 +705,10 @@ public class SeatSelection implements Initializable {
 
             if (seatReference.getText().equals("Reserved"))
                 seatReference.setStyle("-fx-background-color: red;");
-            else if (seatReference.getText().toString().equals("Open"))
+            else if (seatReference.getText().toString().equals(""))
                 seatReference.setStyle("-fx-background: white;");
             else if (seatReference.getText().toString().equals("Selected")) {
-                seatReference.setText("Open");
+                seatReference.setText("");
                 seatReference.setStyle("-fx-background-color: white;");
             }
             seatList.set(i, seatReference);
@@ -723,7 +723,7 @@ public class SeatSelection implements Initializable {
     void mouseEnterOpenSeat(MouseEvent event) {
         Label seatRef = (Label) event.getSource();
 
-        if (seatRef.getText().equals("Open"))
+        if (seatRef.getText().equals(""))
             seatRef.setStyle("-fx-background-color: lightblue;");
     }
 
@@ -731,7 +731,7 @@ public class SeatSelection implements Initializable {
     void mouseExitOpenSeat(MouseEvent event) {
         Label seatRef = (Label) event.getSource();
 
-        if (seatRef.getText().equals("Open"))
+        if (seatRef.getText().equals(""))
             seatRef.setStyle("-fx-background-color: white;");
     }
 

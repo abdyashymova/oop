@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.control.Alert;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -32,10 +34,17 @@ public class DatabaseHandler extends Configs {
             prSt.setString(3, user.getUserName());
             prSt.setString(4, user.getPassword());
             prSt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sign up successful");
+            alert.setHeight(100);
+            alert.setWidth(300);
+            alert.show();
+        } catch (SQLException | ClassNotFoundException e) {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Sign Up Failed!");
+            alert.setHeight(100);
+            alert.setWidth(300);
+            alert.show();
         }
     }
 
@@ -51,10 +60,9 @@ public class DatabaseHandler extends Configs {
             prSt.setString(2, user.getPassword());
 
             resSet = prSt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (SQLException | ClassNotFoundException e) {
+//            e.printStackTrace();
+
         }
         return resSet;
     }

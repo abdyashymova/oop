@@ -24,7 +24,7 @@ public class MovieShow  {
         theaterRoom = "None";
 
         for (int i = 0; i < 108; i++) {
-            seats[i] = "Open";
+            seats[i] = "";
         }
     }
 
